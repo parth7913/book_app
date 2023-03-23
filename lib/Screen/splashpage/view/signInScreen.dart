@@ -1,17 +1,21 @@
+import 'package:bookapp/Screen/splashpage/Controller/SplashController.dart';
+import 'package:bookapp/utils/fireHelper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   TextEditingController txtemail = TextEditingController();
   TextEditingController txtpassword = TextEditingController();
+  SplashController splashController = Get.put(SplashController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: double.infinity,
               width: double.infinity,
               child: Image.asset(
-                "assets/images/background.jpg",
+                "assets/images/background1.jpg",
                 fit: BoxFit.cover,
               ),
             ),
@@ -39,16 +43,19 @@ class _SplashScreenState extends State<SplashScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Sign In",
+                    "Welcome !",
                     style: GoogleFonts.satisfy(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 40,
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    style: GoogleFonts.satisfy(color: Colors.white),
+                    cursorColor: Colors.white,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
@@ -69,6 +76,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    style: GoogleFonts.satisfy(color: Colors.white),
+                    cursorColor: Colors.white,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
@@ -93,7 +103,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     onPressed: () {},
                     child: Text(
                       "Sign In",
-                      style: GoogleFonts.satisfy(fontSize: 20),
+                      style: GoogleFonts.satisfy(
+                          fontSize: 20, color: Colors.black),
                     ),
                   ),
                 ),
@@ -101,13 +112,16 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 20,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    FireHelper.fireHelper.checkUser();
+                    Get.toNamed("signup");
+                  },
                   child: Text(
                     "Don't Have Account ?",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.satisfy(
                       fontSize: 20,
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                   ),
                 ),
@@ -159,10 +173,6 @@ class _SplashScreenState extends State<SplashScreen> {
                           height: 40,
                           width: 40,
                           child: Image.asset("assets/images/Googlu.png")),
-                      Container(
-                          height: 45,
-                          width: 45,
-                          child: Image.asset("assets/images/twitter.png")),
                     ],
                   ),
                 ),

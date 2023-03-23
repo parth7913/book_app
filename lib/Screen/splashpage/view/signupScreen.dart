@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -18,16 +19,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
           alignment: Alignment.center,
           children: [
             Container(
-              height: double.infinity,
-              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               child: Image.asset(
-                "assets/images/background.jpg",
+                "assets/images/background1.jpg",
                 fit: BoxFit.cover,
               ),
             ),
             Container(
-              height: double.infinity,
-              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               color: Colors.black26,
             ),
             Column(
@@ -36,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Sign Up",
+                    "Create Account",
                     style: GoogleFonts.satisfy(
                       color: Colors.white,
                       fontSize: 30,
@@ -46,6 +47,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    style: GoogleFonts.satisfy(color: Colors.white),
+                    cursorColor: Colors.white,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
@@ -66,6 +70,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    style: GoogleFonts.satisfy(color: Colors.white),
+                    cursorColor: Colors.white,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
@@ -90,14 +97,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {},
                     child: Text(
                       "Sign Up",
-                      style: GoogleFonts.satisfy(fontSize: 20),
+                      style: GoogleFonts.satisfy(
+                          fontSize: 20, color: Colors.black),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
-                Row(mainAxisSize: MainAxisSize.min,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       "Have An Account ?",
@@ -108,13 +117,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Get.offNamed("signin");
+                      },
                       child: Text(
                         "Sign In",
                         style: GoogleFonts.satisfy(
-                          decoration: TextDecoration.underline,
+
                           fontSize: 20,
-                          color: Colors.white,
+                          color: Colors.blue,
                         ),
                       ),
                     ),
