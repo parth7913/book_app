@@ -26,15 +26,15 @@ class _HoldScreenState extends State<HoldScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: Scaffold(backgroundColor: Colors.black,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 230,
-                width: 230,
+                height: 250,
+                width: 250,
                 child: Lottie.asset("assets/lottie/booklottie.json"),
               ),
               Padding(
@@ -42,8 +42,8 @@ class _HoldScreenState extends State<HoldScreen> {
                 child: Text(
                   "Make Your BooK !",
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.satisfy(
-                    color: Colors.black,
+                  style: GoogleFonts.kalam(
+                    color: Colors.white,
                     fontSize: 30,
                   ),
                 ),

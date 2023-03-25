@@ -4,13 +4,18 @@ import 'package:bookapp/utils/fireHelper.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
-
   Future<void> HoldScreen() async {
     bool isLogin = await FireHelper.fireHelper.checkUser();
     if (isLogin) {
-      Timer(Duration(seconds: 4), () => Get.offNamed('home'));
+      Timer(
+        Duration(milliseconds: 4500),
+        () => Get.offNamed('home'),
+      );
     } else {
-      Timer(Duration(seconds: 4), () => Get.offNamed('signin'));
+      Timer(
+        Duration(milliseconds: 4500),
+        () => Get.offNamed('signin'),
+      );
     }
   }
 }

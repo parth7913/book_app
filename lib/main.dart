@@ -1,3 +1,4 @@
+import 'package:bookapp/Screen/splashpage/view/HomeScreen.dart';
 import 'package:bookapp/Screen/splashpage/view/holdScreen.dart';
 import 'package:bookapp/Screen/splashpage/view/signupScreen.dart';
 import 'package:bookapp/Screen/splashpage/view/signInScreen.dart';
@@ -20,7 +21,7 @@ void main() async {
       routes: {
         '/': (p0) => HoldScreen(),
         'signin': (p0) => SignInScreen(),
-        // 'home': (p0) => SplashScreen(),
+         'home': (p0) => HomeScreen(),
         'signup': (p0) => SignUpScreen(),
       },
     ),
