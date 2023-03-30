@@ -16,17 +16,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text("Create Your Book",style: GoogleFonts.kalam()), actions: [
-          IconButton(
-            onPressed: () {
-              FireHelper.fireHelper.signOut();
-              Get.offNamed("signin");
-            },
-            icon: Icon(
-              Icons.logout_outlined,
+        appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: Text(
+              "Create Your Book",
+              style: GoogleFonts.kalam(color: Colors.white),
             ),
-          ),
-        ]),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  FireHelper.fireHelper.signOut();
+                  Get.offNamed("signin");
+                },
+                icon: Icon(
+                  Icons.logout_outlined,
+                  color: Colors.white,
+                ),
+              ),
+            ]),
         body: Stack(
           children: [
             Container(
@@ -43,6 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.black26,
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton.extended(backgroundColor: Colors.black,
+          icon: Icon(Icons.add,color: Colors.white,),
+          onPressed: () {
+            Get.toNamed('addPage');
+          },
+          label: Text(
+            "ADD BOOK",
+            style: GoogleFonts.kalam(color: Colors.white),
+          ),
         ),
       ),
     );

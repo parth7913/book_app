@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bookapp/Screen/splashpage/Controller/SplashController.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,27 +24,44 @@ class _HoldScreenState extends State<HoldScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.black,
+      child: Scaffold(
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(alignment: Alignment.center,
             children: [
               Container(
-                alignment: Alignment.center,
-                height: 250,
-                width: 250,
-                child: Lottie.asset("assets/lottie/booklottie.json"),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Make Your BooK !",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.kalam(
-                    color: Colors.white,
-                    fontSize: 30,
-                  ),
+                height: double.infinity,
+                width: double.infinity,
+                child: Image.asset(
+                  "assets/images/background1.jpg",
+                  fit: BoxFit.cover,
                 ),
+              ),
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                color: Colors.black26,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: 250,
+                    width: 250,
+                    child: Lottie.asset("assets/lottie/booklottie.json"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Make Your BooK !",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.kalam(
+                        color: Colors.white,
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

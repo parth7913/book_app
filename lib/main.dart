@@ -1,3 +1,4 @@
+import 'package:bookapp/Screen/splashpage/view/AddProduct.dart';
 import 'package:bookapp/Screen/splashpage/view/HomeScreen.dart';
 import 'package:bookapp/Screen/splashpage/view/holdScreen.dart';
 import 'package:bookapp/Screen/splashpage/view/signupScreen.dart';
@@ -23,7 +24,8 @@ void main() async {
         'signin': (p0) => SignInScreen(),
          'home': (p0) => HomeScreen(),
         'signup': (p0) => SignUpScreen(),
-      },
+        'addPage':(p0) => AddProduct(),
+      }
     ),
   );
 }

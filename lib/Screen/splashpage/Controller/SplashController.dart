@@ -4,6 +4,8 @@ import 'package:bookapp/utils/fireHelper.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
+  RxBool visible = false.obs;
+
   Future<void> HoldScreen() async {
     bool isLogin = await FireHelper.fireHelper.checkUser();
     if (isLogin) {

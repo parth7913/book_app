@@ -85,31 +85,53 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        controller: txtpassword,
-                        style: GoogleFonts.kalam(color: Colors.white),
-                        cursorColor: Colors.white,
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(35),
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: OutlineInputBorder(
+                      child: Obx(
+                        () => TextFormField(
+                          controller: txtpassword,
+                          style: GoogleFonts.kalam(color: Colors.white),
+                          cursorColor: Colors.white,
+                          keyboardType: TextInputType.visiblePassword,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(35),
                               borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(35)),
-                          prefixIcon: Icon(
-                            Icons.lock_outline_rounded,
-                            color: Colors.white,
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(35)),
+                            suffixIcon: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: IconButton(
+                                onPressed: () {
+                                  splashController.visible.value = !splashController.visible.value;
+                                },
+                                icon: splashController.visible.value == true
+                                    ? Icon(
+                                        Icons.visibility_off_outlined,
+                                      )
+                                    : Icon(
+                                        Icons.visibility_outlined,
+                                      ),
+                                color: Colors.white,
+                              ),
+                            ),
+
+                            prefixIcon: Icon(
+                              Icons.lock_outline_rounded,
+                              color: Colors.white,
+                            ),
+                            hintText: "Password",
+                            hintStyle: GoogleFonts.kalam(color: Colors.white),
+
                           ),
-                          hintText: "Password",
-                          hintStyle: GoogleFonts.kalam(color: Colors.white),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "please enter your password";
+                            }
+                          },
+                          obscureText: splashController.visible.value,
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "please enter your password";
-                          }
-                        },
                       ),
                     ),
                     Padding(
@@ -118,8 +140,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         style:
                             ElevatedButton.styleFrom(fixedSize: Size(350, 50)),
                         onPressed: () {
-                          if(key.currentState!.validate()){
-                            FireHelper.fireHelper.signInUser(txtemail.text, txtpassword.text);
+                          if (key.currentState!.validate()) {
+                            FireHelper.fireHelper
+                                .signInUser(txtemail.text, txtpassword.text);
                             Get.offNamed("home");
                           }
                         },
@@ -193,13 +216,15 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           InkWell(
                             onTap: () async {
-                             bool Login = await FireHelper.fireHelper.signInWithGoogle();
-                             if(Login){
-                               Get.offNamed('home');
-                             }
-                             else{
-                               Get.snackbar("please check your emailId", "error");
-                             }
+                              // ignore: non_constant_identifier_names
+                              bool Login = await FireHelper.fireHelper
+                                  .signInWithGoogle();
+                              if (Login) {
+                                Get.offNamed('home');
+                              } else {
+                                Get.snackbar(
+                                    "please check your emailId", "error");
+                              }
                             },
                             child: Container(
                                 height: 40,
